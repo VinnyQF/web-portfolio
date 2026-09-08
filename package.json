@@ -1,0 +1,26 @@
+{
+  "license": "UNLICENSED",
+  "private": true,
+  "name": "web-portifolio",
+  "version": "1.0.0",
+  "description": "This repository hosts my personal website that gives a brief explanation as to who I am, and what I develop.",
+  "directories": {},
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VinnyQF/web-portifolio.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/VinnyQF/web-portifolio/issues"
+  },
+  "homepage": "https://github.com/VinnyQF/web-portifolio#readme",
+  "dependencies": {
+    "astro": "^7.3.2"
+  }
+}
