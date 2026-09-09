@@ -1,0 +1,7 @@
+:root {
+    --color-background: #111619;
+    --color-text: #e6edf0;
+    --muted-text: #acb2b5;
+    --cyan-accent: #34ebcc;
+    font-family: system-ui, sans-serif;
+}
