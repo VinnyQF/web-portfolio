@@ -1,10 +1,21 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {Image} from "astro:assets";
+import portrait from "../assets/PFP.png";
 ---
 <BaseLayout title= "Vinícius Fonseca - Developer" description = "I am a developer based in Salvador, Brazil. Currently, I'm acting as a team member at Seafoam Labs">
     <main>
         <h1>Vinícius Fonseca</h1>
-            <p>My name is Vinícius Fonseca, I'm a developer based in Salvador, Brazil.</p>
-            <p>I'm currently working on Shelly, an Arch Linux package manager, as a core team member at Seafoam Labs.</p>
+        <Image
+          src={portrait}
+          alt="Portrait of Vinícius Fonseca"
+          width={320}
+        />
+            <p>Hello! I'm a developer based in Salvador, Brazil, focused on backend development and Linux systems.</p>
+            <p>I'm a core contributor to Shelly-ALPM, an open source package manager for Arch Linux distributions. I've worked on bugfixes, introduction of new features and overall package management integration.</p>
+            <p>I have experience working with Zig, C, Python, C#, JavaScript/TypeScript and Centura.</p>
+
+            <p><a href="https://github.com/Seafoam-Labs/Shelly-ALPM/">Shelly-ALPM repository</a></p>
+            <p><a href="https://github.com/VinnyQF">Github Profile</a></p>
     </main>
 </BaseLayout>

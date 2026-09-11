@@ -17,3 +17,9 @@ main {
     margin-inline: auto;
     padding: 4rem 1.24rem;
 }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
