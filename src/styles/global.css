@@ -13,9 +13,25 @@ body {
 }
 
 main {
-    max-width: 65ch;
+    max-width: 70rem;
     margin-inline: auto;
     padding: 4rem 1.24rem;
+}
+
+.intro {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 45rem) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+  }
+}
+
+.intro__text {
+  max-width: 60ch;
 }
 
 img {
