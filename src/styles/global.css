@@ -1,5 +1,19 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  background-color: var(--color-background);
-  color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+main {
+    max-width: 65ch;
+    margin-inline: auto;
+    padding: 4rem 1.24rem;
 }
