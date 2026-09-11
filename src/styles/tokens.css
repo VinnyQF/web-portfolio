@@ -1,7 +1,10 @@
 :root {
-    --color-background: #111619;
+    --color-background: #111111;
     --color-text: #e6edf0;
     --muted-text: #acb2b5;
     --cyan-accent: #34ebcc;
-    font-family: system-ui, sans-serif;
+    --color-surface: #18181b;
+    --color-border: #43434b;
+    --font-body: ui-monospace, "Cascadia Code", "Source Code Pro",
+      "Liberation Mono", monospace;
 }
