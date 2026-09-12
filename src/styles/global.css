@@ -73,7 +73,7 @@ h1 {
   font-size: clamp(2.25rem, 4vw, 3.5rem);
   line-height: 1.1;
   letter-spacing: -0.025em;
-  text-align: left;
+  text-align: center;
 }
 
 h2 {
@@ -82,7 +82,7 @@ h2 {
 }
 
 a {
-  color: var(--cyan-accent);
+  color: var(--color-text);
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
@@ -92,7 +92,7 @@ a:hover {
 }
 
 a:focus-visible {
-  outline: 2px solid var(--cyan-accent);
+  outline: 2px solid var(--color-text);
   outline-offset: 4px;
   border-radius: 0.125rem;
 }
@@ -110,6 +110,12 @@ h2 + p {
 .site-header {
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
 }
 
 .site-header__inner {
@@ -134,4 +140,43 @@ h2 + p {
 .project-section {
   padding-block-start: 2rem;
   border-top: 1px solid var(--color-border);
+}
+
+/*Repo Card*/  
+
+.repo-card {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: 2rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.repo-card > h3,
+.repo-card > p {
+  margin: 0;
+}
+
+.repo-card > h3 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.repo-card__metadata {
+  color: var(--muted-text);
+  font-size: 0.875rem;
+}
+
+.repo-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1.5rem;
 }
