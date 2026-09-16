@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import RepositoryCard from "../components/RepositoryCard.astro";
 ---
 <BaseLayout title= "Vinícius Fonseca - Developer" description = "I am a developer based in Salvador, Brazil. Currently, I'm acting as a team member at Seafoam Labs">
     <main>        
@@ -13,41 +14,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <h2 id="projects-heading">Projects</h2>
         
           <div class="repo-grid">
-            <article class="repo-card">
-              <h3>Seafoam-Labs / Shelly-ALPM</h3>
-        
-              <p>Package manager for Arch-based Linux systems.</p>
-        
-              <p class="repo-card__metadata">Primary language: Zig</p>
-        
-              <div class="repo-card__links">
-                <a href="https://github.com/Seafoam-Labs/Shelly-ALPM/">
-                  View repository
-                </a>
-        
-                <a href="https://github.com/Seafoam-Labs/Shelly-ALPM/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF">
-                  Merged pull requests
-                </a>
-              </div>
-            </article>
-            <article class="repo-card">
-              <h3>Seafoam-Labs / Aqueous</h3>
-        
-              <p>Modern Wayland Compositor</p>
-        
-              <p class="repo-card__metadata">Primary language: Zig</p>
-        
-              <div class="repo-card__links">
-                <a href="https://github.com/Seafoam-Labs/Aqueous/">
-                  View repository
-                </a>
-        
-                <a href="https://github.com/Seafoam-Labs/Aqueous/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF">
-                  Merged pull requests
-                </a>
-              </div>
-            </article>
-
+              <RepositoryCard
+                name="Seafoam-Labs / Shelly-ALPM"
+                description="Package manager for Arch-based Linux systems."
+                languages={["Zig"]}
+                repoUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/"
+                contributionsUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+              />
+              
+              <RepositoryCard
+                name="Seafoam-Labs / Aqueous"
+                description="Modern Wayland Compositor"
+                languages={["Zig"]}
+                repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
+                contributionsUrl="https://github.com/Seafoam-Labs/Aqueous/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+              />
+              
+              <RepositoryCard
+                name="Web portfolio"
+                description="Personal website"
+                languages={["Astro"]}
+                repoUrl="https://github.com/VinnyQF/web-portifolio"
+              />
           </div>
         </section>
     </main>

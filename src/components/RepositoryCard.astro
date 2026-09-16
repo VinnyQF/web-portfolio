@@ -1,0 +1,27 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  repoUrl: string;
+  languages?: string[];
+  contributionsUrl?: string;
+}
+const { name, description, repoUrl, languages = [], contributionsUrl } = Astro.props;
+---
+<article class="repo-card">
+  <h3>{name}</h3>
+  <p>{description}</p>
+
+  {languages.length > 0 && (
+    <ul class="repo-card__tags">
+      {languages.map((language) => <li class="tag">{language}</li>)}
+    </ul>
+  )}
+
+  <div class="repo-card__links">
+    <a href={repoUrl}>View repository</a>
+    {contributionsUrl && (
+      <a href={contributionsUrl}>Merged pull requests</a>
+    )}
+  </div>
+</article>
