@@ -210,3 +210,67 @@ h2 + p {
   line-height: 1.4;
 }
 
+/* Table */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.skills-table caption {
+  text-align: left;
+  color: var(--muted-text);
+  font-size: 0.875rem;
+  padding-block-end: 0.75rem;
+}
+
+.skills-table th,
+.skills-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.skills-table thead th {
+  background-color: var(--color-surface);
+  font-size: 0.875rem;
+}
+
+.skills-table tbody th {
+  color: var(--muted-text);
+  white-space: nowrap;
+}
+
+/* Experience */
+.experience-entry + .experience-entry {
+  margin-block-start: 2rem;
+  padding-block-start: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.experience-entry h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.experience-entry__meta {
+  margin: 0.25rem 0 0;
+  color: var(--muted-text);
+  font-size: 0.875rem;
+}
+
+.experience-entry ul {
+  margin: 0.75rem 0 0;
+  padding-inline-start: 1.25rem;
+  list-style-type: square;
+  color: var(--muted-text);
+}
+
+.experience-entry li + li {
+  margin-block-start: 0.375rem;
+}
