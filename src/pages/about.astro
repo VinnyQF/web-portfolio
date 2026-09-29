@@ -3,14 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import {Image} from "astro:assets";
 import portrait from "../assets/PFP2.jpg";
 ---
-<BaseLayout title= "Vinícius Fonseca - Developer" description = "I am a developer based in Salvador, Brazil. Currently, I'm acting as a team member at Seafoam Labs">
+<BaseLayout title= "Vinícius Fonseca - Developer" description = "I am a developer based in Brazil. Currently, I'm acting as a team member at Seafoam Labs">
     <main>
       <section class="intro" aria-labelledby="intro-heading">
+        <Image src={portrait} alt="Portrait of Vinícius Fonseca" width={350} densities={[1, 2]} />
         <div class="intro__text">
           <h1 id="intro-heading">Vinícius Fonseca</h1>
-          <p class="intro__lead">Backend developer in Brazil. Linux systems and package management.</p>
+          <p class="intro__lead">Backend developer in Brazil with a focus on Linux systems and package management.</p>
         </div>
-        <Image src={portrait} alt="Portrait of Vinícius Fonseca" width={320} densities={[1, 2]} />
       </section>
     
       <section aria-labelledby="experience-heading">
