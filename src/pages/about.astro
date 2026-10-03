@@ -5,39 +5,79 @@ import portrait from "../assets/PFP2.jpg";
 ---
 <BaseLayout title= "Vinícius Fonseca - Developer" description = "I am a developer based in Brazil. Currently, I'm acting as a team member at Seafoam Labs">
     <main>
-      <section class="intro" aria-labelledby="intro-heading">
-        <Image src={portrait} alt="Portrait of Vinícius Fonseca" width={350} densities={[1, 2]} />
-        <div class="intro__text">
-          <h1 id="intro-heading">Vinícius Fonseca</h1>
-          <p class="intro__lead">Backend developer in Brazil with a focus on Linux systems and package management.</p>
-        </div>
-      </section>
+        <section class="about-intro" aria-labelledby="intro-heading">
+          <Image
+            class="about-intro__portrait"
+            src={portrait}
+            alt="Portrait of Vinícius Fonseca"
+            width={240}
+            densities={[1, 2]}
+          />
+        
+          <div class="about-intro__content">
+            <p class="about-intro__eyebrow">About me</p>
+        
+            <h1 id="intro-heading">Vinícius Fonseca</h1>
+        
+            <p class="about-intro__lead">
+              Backend and systems developer based in Salvador, Brazil, with a
+              particular interest in Linux, package management, and desktop
+              technologies.
+            </p>
+        
+            <p>
+              I currently contribute to projects at Seafoam Labs while developing
+              my knowledge of Zig, GTK, and the Linux ecosystem. I enjoy working
+              close to the operating system and understanding how software behaves
+              below its user-facing surface.
+            </p>
+          </div>
+        </section>
+
     
       <section aria-labelledby="experience-heading">
         <h2 id="experience-heading">Experience</h2>
             
         <article class="experience-entry">
-          <h3>Seafoam Labs</h3>
-          <p class="experience-entry__meta">
-            Core contributor · <time datetime="2026-02">February 2026</time> - Current
+          <p class="experience-entry__period">
+            <time datetime="2026-02">2026</time>
+            <span aria-hidden="true">—</span>
+            Present
           </p>
-          <ul>
-            <li>General maintenance and bug fixing across multiple projects.</li>
-            <li>Integrated new solutions into existing projects.</li>
-            <li>Issue tracking, testing, and requesting new features.</li>
-          </ul>
+        
+          <div class="experience-entry__content">
+            <header class="experience-entry__header">
+              <h3>Seafoam Labs</h3>
+              <p>Core contributor</p>
+            </header>
+        
+            <ul>
+              <li>Maintain and fix bugs across multiple open-source projects.</li>
+              <li>Integrate new solutions into existing codebases.</li>
+              <li>Investigate issues, test changes, and propose new features.</li>
+            </ul>
+          </div>
         </article>
 
         <article class="experience-entry">
-          <h3>SGN Sistemas</h3>
-          <p class="experience-entry__meta">
-            Development Intern · <time datetime="2023">2023</time> - <time datetime="2025">2025</time> 
+          <p class="experience-entry__period">
+            <time datetime="2024">2024</time>
+            <span aria-hidden="true">—</span>
+            <time datetime="2026">2026</time>
           </p>
-          <ul>
-            <li>Maintenance and bug fixing on a legacy ERP system written in Centura.</li>
-            <li>Developed new features for that system.</li>
-            <li>Integrated the old codebase with more modern solutions.</li>
-          </ul>
+        
+          <div class="experience-entry__content">
+            <header class="experience-entry__header">
+              <h3>SGN Sistemas</h3>
+              <p>Software Development Intern</p>
+            </header>
+        
+            <ul>
+              <li>Maintained and fixed bugs in a legacy ERP system written in Centura.</li>
+              <li>Developed new features for the ERP system.</li>
+              <li>Integrated the legacy codebase with more modern systems and tools.</li>
+            </ul>
+          </div>
         </article>
 
       </section>
@@ -57,27 +97,36 @@ import portrait from "../assets/PFP2.jpg";
             <tbody>
               <tr>
                 <th scope="row">Systems</th>
+            
                 <td>
-                  <div class="tag-list">
-                    <span >Zig,</span>
-                    <span >C,</span>
-                    <span >C#</span>
-                  </div>
+                  <ul class="tag-list" aria-label="Systems technologies">
+                    <li class="tag">Zig</li>
+                    <li class="tag">C</li>
+                    <li class="tag">C#</li>
+                  </ul>
                 </td>
-                <td>Shelly-ALPM: libalpm integration, GTK interfaces, event handling and logging.</td>
+            
+                <td>
+                  Used in Shelly-ALPM for libalpm integration, GTK interfaces,
+                  event handling, and logging.
+                </td>
               </tr>
-              <!-- more rows -->
+            
               <tr>
                 <th scope="row">Backend</th>
+            
                 <td>
-                  <div class="tag-list">
-                    <span >SQL Server, </span>
-                    <span >Centura</span>
-                  </div>
+                  <ul class="tag-list" aria-label="Backend technologies">
+                    <li class="tag">SQL Server</li>
+                    <li class="tag">Centura</li>
+                  </ul>
                 </td>
-                <td>SGN Sistemas: ERP module development, event handling, query construction and interoperability.</td>
+            
+                <td>
+                  Used at SGN Sistemas for ERP development, event handling,
+                  database queries, and interoperability.
+                </td>
               </tr>
-
             </tbody>
           </table>
         </div>
