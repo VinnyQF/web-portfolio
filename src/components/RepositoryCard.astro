@@ -18,7 +18,13 @@ const {
 ---
 <article class="repo-card">
   <div class="repo-card__body">
-    <h3>{name}</h3>
+    
+      <h3>
+        <a class="repo-card__title-link" href={repoUrl}>
+          {name}
+          <span aria-hidden="true">↗</span>
+        </a>
+      </h3>
     <p class="repo-card__description">{description}</p>
   </div>
 
@@ -26,12 +32,11 @@ const {
 
       <RepositoryBar languageBytes={languageBytes} />
 
-    <div class="repo-card__links">
-      <a href={repoUrl}>Repository ↗</a>
-
       {contributionsUrl && (
-        <a href={contributionsUrl}>Contributions ↗</a>
+        <div class="repo-card__links">
+          <a href={contributionsUrl}>Merged pull requests ↗</a>
+        </div>
       )}
-    </div>
+
   </footer>
 </article>

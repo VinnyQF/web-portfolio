@@ -303,6 +303,22 @@ h2 + p {
   list-style: none;
 }
 
+.repo-card__title-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.repo-card__title-link span {
+  color: var(--muted-text);
+  font-size: 0.875em;
+}
+
+.repo-card__title-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+
 .skills-table th:first-child {
   width: 8rem;
 }
