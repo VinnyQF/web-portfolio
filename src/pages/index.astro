@@ -10,6 +10,7 @@ import RepositoryCard from "../components/RepositoryCard.astro";
               I'm Vinícius Fonseca, a backend/systems developer based in Brazil.
               Currently, I'm focusing on Zig development, alongside GTK and Linux development as a whole.
             </p>
+            <p>Feel free to take a look at the projects I'm working on below</p>
           </section>
         <section class="project-section" aria-labelledby="projects-heading">
           <h2 id="projects-heading">Projects</h2>
@@ -21,10 +22,18 @@ import RepositoryCard from "../components/RepositoryCard.astro";
                 repoUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/"
                 contributionsUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
               />
+
+              <RepositoryCard
+                name="Pearl"
+                description="Zig + GTK4 desktop shell for the Aqueous Wayland compositor."
+                languages={["Zig"]}
+                repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
+                contributionsUrl="https://github.com/Seafoam-Labs/Pearl/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+              />
               
               <RepositoryCard
                 name="Aqueous"
-                description="Modern Wayland Compositor"
+                description="A dynamic tiling Wayland compositor and window manager with compositor-side motion and Vulkan effects, in one Zig process."
                 languages={["Zig"]}
                 repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
                 contributionsUrl="https://github.com/Seafoam-Labs/Aqueous/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
