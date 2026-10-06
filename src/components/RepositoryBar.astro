@@ -1,0 +1,97 @@
+---
+interface Props {
+  languageBytes: Record<string, number>;
+}
+
+const { languageBytes } = Astro.props;
+
+const languageColors: Record<string, string> = {
+  Zig: "#ec915c",
+  C: "#555555",
+  "C#": "#178600",
+  Astro: "#ff5a03",
+  JavaScript: "#f1e05a",
+  TypeScript: "#3178c6",
+  CSS: "#663399",
+  HTML: "#e34c26",
+};
+
+const entries = Object.entries(languageBytes)
+  .filter(([, bytes]) => Number.isFinite(bytes) && bytes > 0)
+  .sort(([, first], [, second]) => second - first);
+
+const total = entries.reduce((sum, [, bytes]) => sum + bytes, 0);
+
+const breakdown = entries.map(([name, bytes]) => ({
+  name,
+  percentage: (bytes / total) * 100,
+  color: languageColors[name] ?? "#acb2b5",
+}));
+---
+
+{breakdown.length > 0 && (
+  <div class="language-summary">
+    <div class="language-bar" aria-hidden="true">
+      {breakdown.map((language) => (
+        <span
+          style={{
+            flexGrow: language.percentage,
+            backgroundColor: language.color,
+          }}
+        />
+      ))}
+    </div>
+
+    <ul class="language-legend" aria-label="Repository language distribution">
+      {breakdown.map((language) => (
+        <li>
+          <span
+            class="language-dot"
+            style={{ backgroundColor: language.color }}
+            aria-hidden="true"
+          />
+          <span>
+            {language.name} {language.percentage.toFixed(1)}%
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .language-bar {
+    display: flex;
+    height: 0.375rem;
+    overflow: hidden;
+    background-color: var(--color-border);
+  }
+
+  .language-bar > span {
+    flex-basis: 0;
+    min-width: 0;
+  }
+
+  .language-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem 1rem;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted-text);
+    font-size: 0.75rem;
+  }
+
+  .language-legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .language-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    flex-shrink: 0;
+  }
+</style>

@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RepositoryCard from "../components/RepositoryCard.astro";
+import repositoryData from "../data/repositories.json";
+const updatedLabel = new Intl.DateTimeFormat("en", {
+  dateStyle: "medium",
+  timeZone: "UTC",
+}).format(new Date(repositoryData.updatedAt));
+
 ---
 <BaseLayout title= "Vinícius Fonseca - Developer" description = "I am a developer based in Salvador, Brazil. Currently, I'm acting as a team member at Seafoam Labs">
     <main>        
@@ -8,43 +14,51 @@ import RepositoryCard from "../components/RepositoryCard.astro";
             <h1 id="hero-heading">Software developer with a love for Linux.</h1>
             <p class="hero__lead">
               I'm Vinícius Fonseca, a backend/systems developer based in Brazil.
-              Currently, I'm focusing on Zig development, alongside GTK and Linux development as a whole.
+              Currently, I'm focusing on Open Source development for Linux systems as a whole.
               All the projects I'm contributing to are listed below.
             </p>
           </section>
         <section class="project-section" aria-labelledby="projects-heading">
           <h2 id="projects-heading">Projects</h2>
+          <p class="project-section__updated">
+            Last update:
+            <time datetime={repositoryData.updatedAt}>
+              {updatedLabel}
+            </time>
+          </p>
+
           <div class="repo-grid">
               <RepositoryCard
                 name="Shelly-ALPM"
                 description="Package manager for Arch-based Linux systems."
-                languages={["Zig"]}
                 repoUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/"
                 contributionsUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+                languageBytes={
+                    repositoryData.repositories["Seafoam-Labs/Shelly-ALPM"].languageBytes
+                  }
               />
 
               <RepositoryCard
                 name="Pearl"
                 description="Zig + GTK4 desktop shell for the Aqueous Wayland compositor."
-                languages={["Zig"]}
-                repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
+                languageBytes={
+                    repositoryData.repositories["Seafoam-Labs/Pearl"].languageBytes
+                  }
+                repoUrl="https://github.com/Seafoam-Labs/Pearl/"
                 contributionsUrl="https://github.com/Seafoam-Labs/Pearl/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
               />
               
               <RepositoryCard
                 name="Aqueous"
                 description="A dynamic tiling Wayland compositor and window manager with compositor-side motion and Vulkan effects, in one Zig process."
-                languages={["Zig"]}
+                languageBytes={
+                    repositoryData.repositories["Seafoam-Labs/Pearl"].languageBytes
+                  }
+
                 repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
                 contributionsUrl="https://github.com/Seafoam-Labs/Aqueous/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
               />
               
-              <RepositoryCard
-                name="Web portfolio"
-                description="Personal website"
-                languages={["Astro"]}
-                repoUrl="https://github.com/VinnyQF/web-portifolio"
-              />
           </div>
         </section>
     </main>

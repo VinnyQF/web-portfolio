@@ -1,12 +1,20 @@
 ---
+import RepositoryBar from "./RepositoryBar.astro";
 interface Props {
   name: string;
   description: string;
   repoUrl: string;
   languages?: string[];
   contributionsUrl?: string;
+  languageBytes?: Record<string,number>;
 }
-const { name, description, repoUrl, languages = [], contributionsUrl } = Astro.props;
+const { 
+  name, 
+  description, 
+  repoUrl, 
+  languageBytes = {}, 
+  contributionsUrl 
+} = Astro.props;
 ---
 <article class="repo-card">
   <div class="repo-card__body">
@@ -15,13 +23,8 @@ const { name, description, repoUrl, languages = [], contributionsUrl } = Astro.p
   </div>
 
   <footer class="repo-card__footer">
-    {languages.length > 0 && (
-      <ul class="repo-card__tags">
-        {languages.map((language) => (
-          <li class="tag">{language}</li>
-        ))}
-      </ul>
-    )}
+
+      <RepositoryBar languageBytes={languageBytes} />
 
     <div class="repo-card__links">
       <a href={repoUrl}>Repository ↗</a>

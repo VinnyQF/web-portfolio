@@ -292,7 +292,6 @@ h2 + p {
   gap: 1rem 1.5rem;
 }
 
-
 .repo-card__tags, .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -311,6 +310,13 @@ h2 + p {
 .skills-table td:nth-child(2) {
   width: 14rem;
 }
+
+.project-section__updated {
+  margin-block: 0 1.5rem;
+  color: var(--muted-text);
+  font-size: 0.75rem;
+}
+
 
 
 /* Tag */
