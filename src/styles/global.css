@@ -225,12 +225,12 @@ h2 + p {
 /*Repo Card*/  
 
 .repo-card {
-  display: grid;
-  grid-row: span 4;
-  grid-template-rows:subgrid;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
   min-width: 0;
-  padding: clamp(1.25rem, 3vw, 2rem);
+  padding: 1.25rem;
+
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
 }
@@ -238,6 +238,26 @@ h2 + p {
 .repo-card > h3,
 .repo-card > p {
   margin: 0;
+}
+
+.repo-card__body h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.3;
+}
+
+.repo-card__description {
+  margin: 0.5rem 0 0;
+  color: var(--muted-text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.repo-card__footer {
+  display: grid;
+  gap: 1rem;
+  margin-block-start: auto;
 }
 
 .repo-card__metadata {
@@ -248,8 +268,19 @@ h2 + p {
 .repo-card__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.5rem;
-  grid-row:4;
+  gap: 0.5rem 1rem;
+
+  padding-block-start: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+}
+
+.repo-card:hover {
+  border-color: var(--muted-text);
+}
+
+.repo-card:focus-within {
+  border-color: var(--color-text);
 }
 
 .repo-grid {
