@@ -13,15 +13,16 @@ const updatedLabel = new Intl.DateTimeFormat("en", {
         <section class="hero" aria-labelledby="hero-heading">
             <h1 id="hero-heading">Software developer with a love for Linux.</h1>
             <p class="hero__lead">
-              I'm Vinícius Fonseca, a backend/systems developer based in Brazil.
-              Currently, I'm focusing on Open Source development for Linux systems as a whole.
-              All the projects I'm contributing to are listed below.
+              I'm Vinícius Fonseca, a backend and systems developer based in Brazil.
+              I contribute to open-source software for Linux, with a focus on
+              system tools and desktop environments.
+              Below are selected projects I've built or contributed to.
             </p>
           </section>
         <section class="project-section" aria-labelledby="projects-heading">
           <h2 id="projects-heading">Projects</h2>
           <p class="project-section__updated">
-            Last update:
+              Last update:&nbsp;
             <time datetime={repositoryData.updatedAt}>
               {updatedLabel}
             </time>
@@ -58,6 +59,17 @@ const updatedLabel = new Intl.DateTimeFormat("en", {
                 repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
                 contributionsUrl="https://github.com/Seafoam-Labs/Aqueous/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
               />
+
+              <RepositoryCard
+                name="Oficina-LaTeX"
+                description="Materials for a LaTeX minicourse I taught at university, in Portuguese."
+                languageBytes={
+                    repositoryData.repositories["VinnyQF/minicurso-latex"].languageBytes
+                  }
+
+                repoUrl="https://github.com/VinnyQF/minicurso-latex/"
+              />
+
               
           </div>
         </section>
