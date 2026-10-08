@@ -176,5 +176,17 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
     </header>
     <slot>
     </slot>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>© {new Date().getFullYear()} Vinícius Queiroz Fonseca</p>
+    
+        <a href="https://github.com/VinnyQF/web-portifolio">
+          Source code
+        </a>
+    
+        <p>No analytics or tracking scripts.</p>
+      </div>
+    </footer>
+
 </body>
 </html>
