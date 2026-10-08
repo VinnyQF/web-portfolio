@@ -65,7 +65,6 @@ main {
   margin-block: 0 1.5rem;
 }
 
-
 /*Intro*/
 .about-intro {
   display: grid;
@@ -76,12 +75,7 @@ main {
   padding: clamp(1.25rem, 3vw, 2rem);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  transition: border-color 150ms ease;
-}
 
-.about-intro:hover,
-.about-intro:hover .about-intro__portrait {
-  border-color: var(--muted-text);
 }
 
 .about-intro__portrait {
@@ -154,34 +148,13 @@ main {
   border-radius: 0;
   text-decoration: none;
 
-  transition:
-    color 150ms ease,
-    border-color 150ms ease;
 }
 
 .contact-link svg {
   display: block;
   width: 1.25rem;
   height: 1.25rem;
-  transition: filter 150ms ease;
-}
 
-.about-intro__contact .contact-link:hover,
-.about-intro__contact .contact-link:focus-visible {
-  color: var(--color-text);
-  border-color: var(--color-text);
-}
-
-.contact-link:hover svg,
-.contact-link:focus-visible svg {
-  filter: drop-shadow(0 0 4px rgb(230 237 240 / 45%));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-intro__contact .contact-link,
-  .contact-link svg {
-    transition: none;
-  }
 }
 
 @media (max-width: 40rem) {
@@ -194,7 +167,6 @@ main {
     justify-self: center;
   }
 }
-
 
 /*Images*/
 img {
@@ -252,7 +224,6 @@ h2 + p {
   border-bottom: 1px solid var(--color-border);
 }
 
-
 .site-header nav a:hover,
 .site-header nav a[aria-current="page"] {
   text-decoration: underline;
@@ -291,18 +262,7 @@ h2 + p {
   color: var(--color-border);
   text-decoration: none;
 
-  transition:
-    color 150ms ease,
-    text-shadow 150ms ease;
 }
-
-.primary-nav a:hover,
-.primary-nav a:focus-visible,
-.primary-nav a[aria-current="page"] {
-  color: var(--color-text);
-  text-shadow: 0 0 4px rgb(230 237 240 / 45%);
-}
-
 
 .site-logo {
   justify-self: start;
@@ -316,10 +276,6 @@ h2 + p {
   border: 1px solid var(--color-border);
   border-radius: 0;
 
-  transition:
-    color 150ms ease,
-    border-color 150ms ease,
-    filter 150ms ease;
 }
 
 .site-logo__mark {
@@ -330,13 +286,6 @@ h2 + p {
 
   -webkit-mask: var(--logo-url) center / contain no-repeat;
   mask: var(--logo-url) center / contain no-repeat;
-}
-
-.site-logo:hover,
-.site-logo:focus-visible {
-  color: var(--color-text);
-  border-color: var(--color-text);
-  filter: drop-shadow(0 0 4px rgb(230 237 240 / 45%));
 }
 
 .header-actions {
@@ -354,7 +303,7 @@ h2 + p {
   width: 2.75rem;
   height: 2.75rem;
   padding: 0;
-  transition: color 150ms ease, filter 150ms ease;
+
   color: var(--color-border);
   background: transparent;
   border: 1px solid var(--color-border);
@@ -366,10 +315,8 @@ h2 + p {
   cursor: default;
 }
 
-.header-action:hover {
-  color: #e6edf0;
-  filter: drop-shadow(0 0 4px rgb(230 237 240 / 45%));
-  border: 1px solid var(--color-text);
+.header-action[hidden] {
+  display: none;
 }
 
 @media (max-width: 36rem) {
@@ -377,7 +324,6 @@ h2 + p {
     grid-column: 2;
   }
 }
-
 
 .site-name[aria-current="page"] {
   text-decoration: underline;
@@ -453,14 +399,6 @@ h2 + p {
   font-size: 0.8125rem;
 }
 
-.repo-card:hover {
-  border-color: var(--muted-text);
-}
-
-.repo-card:focus-within {
-  border-color: var(--color-text);
-}
-
 .repo-grid {
   display: grid;
   grid-template-columns: repeat(
@@ -496,37 +434,20 @@ h2 + p {
   text-decoration-thickness: 2px;
 }
 
-
-
 .skills-table tbody th,
 .skills-table tbody td {
-  transition:
-    background-color 150ms ease,
-    border-color 150ms ease;
-}
 
-.skills-table tbody tr:hover > th,
-.skills-table tbody tr:hover > td {
-  border-color: var(--muted-text);
-}
-
-.skills-table tbody tr:hover .tag {
-  border-color: var(--muted-text);
 }
 
 .skills-table .tag {
-  transition: border-color 150ms ease;
+
 }
-
-
 
 .project-section__updated {
   margin-block: 0 1.5rem;
   color: var(--muted-text);
   font-size: 0.75rem;
 }
-
-
 
 /* Tag */
 .tag {
@@ -538,7 +459,6 @@ h2 + p {
   font-size: 0.75rem;
   line-height: 1.4;
 }
-
 
 /* Table */
 .table-scroll {
@@ -583,11 +503,6 @@ h2 + p {
   padding-block: 1.75rem;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-}
-
-.experience-entry:hover{
-    border-top: 1px solid var(--muted-text);
-    border-bottom: 1px solid var(--muted-text);
 }
 
 .experience-entry__period {
@@ -642,5 +557,95 @@ h2 + p {
     justify-self: end;
     display: flex;
     gap: 0.75rem;
+  }
+}
+
+/* Shared interaction styles */
+:where(
+  .about-intro,
+  .about-intro__portrait,
+  .repo-card,
+  .experience-entry,
+  .site-logo,
+  .header-action,
+  .contact-link,
+  .skills-table tbody th,
+  .skills-table tbody td,
+  .skills-table .tag
+) {
+  transition:
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    filter 150ms ease;
+}
+
+.primary-nav a {
+  transition: color 150ms ease, text-shadow 150ms ease;
+}
+
+.contact-link svg {
+  transition: filter 150ms ease;
+}
+
+/* Panels and rows share the same active border color. */
+.about-intro:is(:hover, :focus-within),
+.about-intro:is(:hover, :focus-within) .about-intro__portrait,
+.repo-card:is(:hover, :focus-within),
+.experience-entry:is(:hover, :focus-within),
+.skills-table tbody tr:is(:hover, :focus-within) > :is(th, td),
+.skills-table tbody tr:is(:hover, :focus-within) .tag {
+  border-color: var(--color-border-hover);
+}
+
+.about-intro:is(:hover, :focus-within),
+.about-intro:is(:hover, :focus-within) .about-intro__portrait,
+.repo-card:is(:hover, :focus-within),
+.skills-table tbody tr:is(:hover, :focus-within) > :is(th, td),
+.skills-table tbody tr:is(:hover, :focus-within) .tag {
+  box-shadow: var(--hover-border-ring);
+}
+
+/* Experience entries have horizontal borders only. */
+.experience-entry:is(:hover, :focus-within) {
+  box-shadow: var(--hover-line-ring);
+}
+
+/* Icon links and controls share their active colors and border treatment. */
+.site-logo:is(:hover, :focus-visible),
+.header-action:is(:hover, :focus-visible),
+.about-intro__contact .contact-link:is(:hover, :focus-visible) {
+  color: var(--color-text);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--hover-border-ring);
+}
+
+.site-logo:is(:hover, :focus-visible),
+.header-action:is(:hover, :focus-visible),
+.contact-link:is(:hover, :focus-visible) svg {
+  filter: var(--hover-filter);
+}
+
+.primary-nav a:is(:hover, :focus-visible, [aria-current="page"]) {
+  color: var(--color-text);
+  text-shadow: var(--hover-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(
+    .about-intro,
+    .about-intro__portrait,
+    .repo-card,
+    .experience-entry,
+    .site-logo,
+    .header-action,
+    .contact-link,
+    .contact-link svg,
+    .primary-nav a,
+    .skills-table tbody th,
+    .skills-table tbody td,
+    .skills-table .tag
+  ) {
+    transition: none;
   }
 }

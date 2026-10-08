@@ -21,6 +21,73 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description}>
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
+    
+        let savedTheme = null;
+    
+        try {
+          savedTheme = localStorage.getItem("theme");
+        } catch {
+          // The theme still works when browser storage is unavailable.
+        }
+    
+        if (savedTheme !== "light" && savedTheme !== "dark") {
+          savedTheme = null;
+        }
+    
+        function applyTheme(theme) {
+          root.dataset.theme = theme;
+    
+          const button = document.getElementById("theme-toggle");
+    
+          if (button) {
+            const label =
+              theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode";
+    
+            button.setAttribute("aria-label", label);
+            button.title = label;
+          }
+        }
+    
+        applyTheme(
+          savedTheme ?? (systemTheme.matches ? "light" : "dark")
+        );
+    
+        document.addEventListener("DOMContentLoaded", () => {
+          const button = document.getElementById("theme-toggle");
+    
+          if (!button) return;
+    
+          applyTheme(root.dataset.theme);
+          button.hidden = false;
+    
+          button.addEventListener("click", () => {
+            savedTheme =
+              root.dataset.theme === "dark" ? "light" : "dark";
+    
+            applyTheme(savedTheme);
+    
+            try {
+              localStorage.setItem("theme", savedTheme);
+            } catch {
+              // The selected theme remains active for this page.
+            }
+          });
+        });
+    
+        systemTheme.addEventListener("change", (event) => {
+          if (savedTheme === null) {
+            applyTheme(event.matches ? "light" : "dark");
+          }
+        });
+      })();
+    </script>
+
 
 </head>
 <body>
@@ -56,11 +123,12 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
         <div class="header-actions">
           <button
+            id="theme-toggle"
             class="header-action"
             type="button"
-            aria-label="Switch color theme (coming soon)"
-            title="Color theme switching — coming soon"
-            disabled
+            aria-label="Switch to light mode"
+            title="Switch to light mode"
+            hidden
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
