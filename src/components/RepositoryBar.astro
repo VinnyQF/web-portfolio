@@ -1,9 +1,16 @@
 ---
+import { ui, type Locale } from "../i18n/ui";
 interface Props {
   languageBytes: Record<string, number>;
+  locale?: Locale;
 }
 
-const { languageBytes } = Astro.props;
+const { languageBytes, locale = "en" } = Astro.props;
+const labels = ui[locale];
+const percentageFormatter = new Intl.NumberFormat(
+  locale === "pt-br" ? "pt-BR" : "en",
+  { minimumFractionDigits: 1, maximumFractionDigits: 1 },
+);
 
 const languageColors: Record<string, string> = {
   Zig: "#ec915c",
@@ -64,7 +71,7 @@ const breakdown = displayEntries.map(([name, bytes]) => ({
       ))}
     </div>
 
-    <ul class="language-legend" aria-label="Repository language distribution">
+    <ul class="language-legend" aria-label={labels.distribution}>
       {breakdown.map((language) => (
         <li>
           <span
@@ -73,7 +80,8 @@ const breakdown = displayEntries.map(([name, bytes]) => ({
             aria-hidden="true"
           />
           <span>
-            {language.name} {language.percentage.toFixed(1)}%
+            {language.name === "Other" ? labels.other : language.name}
+            {" "}{percentageFormatter.format(language.percentage)}%
           </span>
         </li>
       ))}

@@ -70,6 +70,56 @@ main {
   margin-block: 0 1.5rem;
 }
 
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  min-height: 2.75rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  text-decoration: none;
+
+  transition: border-color 150ms ease;
+}
+
+.language-switch__option {
+  padding: 0.375rem 0.625rem;
+  border-radius: 0;
+
+  color: var(--muted-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.language-switch__option.is-current {
+  color: var(--color-background);
+  background-color: var(--color-text);
+}
+
+.language-switch:is(:hover, :focus-visible) {
+  border-color: var(--color-border-hover);
+}
+
+.language-switch:is(:hover, :focus-visible)
+  .language-switch__option:not(.is-current) {
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-switch,
+  .language-switch__option {
+    transition: none;
+  }
+}
+
+
 /*Intro*/
 .about-intro {
   display: grid;
@@ -539,15 +589,6 @@ h2 + p {
 
 .repo-card__title-link:hover {
   text-decoration-thickness: 2px;
-}
-
-.skills-table tbody th,
-.skills-table tbody td {
-
-}
-
-.skills-table .tag {
-
 }
 
 .project-section__updated {

@@ -3,18 +3,40 @@ import "../styles/tokens.css"
 import "../styles/global.css"
 import logoUrl from "../assets/VinnyQF.svg?url";
 import faviconUrl from "../assets/favicon.svg?url";
+import { ui, type Locale } from "../i18n/ui";
 interface Props {
   title: string;
   description: string;
+  locale?: Locale;
 }
 
-const {title, description} = Astro.props;
+const {
+  title,
+  description,
+  locale = "en",
+} = Astro.props;
+
 const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
+
+const pagePath =
+  pathname.replace(/^\/pt-br(?=\/|$)/, "") || "/";
+
+const homeUrl = locale === "en" ? "/" : "/pt-br/";
+const aboutUrl = locale === "en" ? "/about" : "/pt-br/about";
+
+const alternateLocale = locale === "en" ? "pt-br" : "en";
+
+const alternateUrl =
+  locale === "en"
+    ? `/pt-br${pagePath === "/" ? "/" : pagePath}`
+    : pagePath;
+
+const labels = ui[locale];
 ---
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={locale === "pt-br" ? "pt-BR" : "en"}>
 <head>
     <link rel="icon" type="image/svg+xml" href={`${faviconUrl}?v=2`} />
     <meta charset="UTF-8">
@@ -46,11 +68,13 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
           if (button) {
             const label =
               theme === "dark"
-                ? "Switch to light mode"
-                : "Switch to dark mode";
+                ? button.dataset.lightLabel
+                : button.dataset.darkLabel;
     
-            button.setAttribute("aria-label", label);
-            button.title = label;
+            if (label) {
+              button.setAttribute("aria-label", label);
+              button.title = label;
+            }
           }
         }
     
@@ -95,8 +119,8 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
       <div class="site-header__inner">
           <a
             class="site-logo"
-            href="/"
-            aria-label="Vinícius Fonseca — Home"
+            href={homeUrl}
+            aria-label={`Vinícius Fonseca — ${labels.home}`}
           >
               <span
                 class="site-logo__mark"
@@ -105,29 +129,31 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
               ></span>
           </a>
     
-        <nav class="primary-nav" aria-label="Primary navigation">
-          <a
-            href="/"
-            aria-current={pathname === "/" ? "page" : undefined}
-          >
-            Home
-          </a>
-    
-          <a
-            href="/about"
-            aria-current={pathname === "/about" ? "page" : undefined}
-          >
-            About
-          </a>
-        </nav>
+          <nav class="primary-nav" aria-label={labels.navigation}>
+            <a
+              href={homeUrl}
+              aria-current={pagePath === "/" ? "page" : undefined}
+            >
+              {labels.home}
+            </a>
+          
+            <a
+              href={aboutUrl}
+              aria-current={pagePath === "/about" ? "page" : undefined}
+            >
+              {labels.about}
+            </a>
+          </nav>
 
         <div class="header-actions">
           <button
             id="theme-toggle"
             class="header-action"
             type="button"
-            aria-label="Switch to light mode"
-            title="Switch to light mode"
+            aria-label={labels.lightMode}
+            title={labels.lightMode}
+            data-light-label={labels.lightMode}
+            data-dark-label={labels.darkMode}
             hidden
           >
             <svg
@@ -145,30 +171,36 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
             </svg>
           </button>
         
-          <button
-            class="header-action"
-            type="button"
-            aria-label="Switch language (coming soon)"
-            title="Language switching — coming soon"
-            disabled
+          <a
+            class="language-switch"
+            href={alternateUrl}
+            hreflang={alternateLocale}
+            lang={alternateLocale === "pt-br" ? "pt-BR" : "en"}
+            aria-label={labels.switchLanguage}
+            title={labels.switchLanguage}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+            <span
+              class:list={[
+                "language-switch__option",
+                { "is-current": locale === "en" },
+              ]}
+              lang="en"
               aria-hidden="true"
             >
-              <circle cx="12" cy="12" r="9" />
-              <ellipse cx="12" cy="12" rx="4" ry="9" />
-              <path d="M3 12h18" />
-            </svg>
-          </button>
+              EN
+            </span>
+          
+            <span
+              class:list={[
+                "language-switch__option",
+                { "is-current": locale === "pt-br" },
+              ]}
+              lang="pt-BR"
+              aria-hidden="true"
+            >
+              PT-BR
+            </span>
+          </a>
         </div>
 
     
@@ -181,10 +213,10 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
         <p>© {new Date().getFullYear()} Vinícius Queiroz Fonseca</p>
     
         <a href="https://github.com/VinnyQF/web-portifolio">
-          Source code
+          {labels.source}
         </a>
     
-        <p>No analytics or tracking scripts.</p>
+        <p>{labels.privacy}</p>
       </div>
     </footer>
 

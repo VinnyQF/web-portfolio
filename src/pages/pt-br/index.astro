@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RepositoryCard from "../../components/RepositoryCard.astro";
+import repositoryData from "../../data/repositories.json";
+const updatedLabel = new Intl.DateTimeFormat("pt-BR", {
+  dateStyle: "medium",
+  timeZone: "UTC",
+}).format(new Date(repositoryData.updatedAt));
+
+---
+<BaseLayout locale="pt-br" 
+    title= "Vinícius Fonseca - Desenvolvedor" 
+    description = "Desenvolvedor backend e de sistemas em Salvador, Brasil. Contribuo para projetos de código aberto voltados ao Linux na Seafoam Labs.">
+    <main class ="home-page">        
+        <section class="hero" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Desenvolvedor de software com foco em Linux.</h1>
+            <p class="hero__lead">
+              Sou Vinícius Fonseca, desenvolvedor backend e de sistemas no Brasil.
+              Contribuo para software de código aberto voltado ao Linux, com foco
+              em ferramentas de sistema, compositores Wayland e interfaces de desktop.
+            </p>
+            
+            <p class="hero__lead">
+              Abaixo estão alguns projetos que desenvolvi ou para os quais contribuí.
+            </p>
+          </section>
+        <section class="project-section" aria-labelledby="projects-heading">
+          <h2 id="projects-heading">Projetos</h2>
+          <p class="project-section__updated">
+              Última atualização dos dados:&nbsp;
+            <time datetime={repositoryData.updatedAt}>
+              {updatedLabel}
+            </time>
+          </p>
+
+          <div class="repo-grid">
+              <RepositoryCard
+                locale="pt-br"
+                name="Shelly-ALPM"
+                description="Gerenciador de pacotes para distribuições Linux baseadas em Arch."
+                repoUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/"
+                contributionsUrl="https://github.com/Seafoam-Labs/Shelly-ALPM/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+                languageBytes={
+                    repositoryData.repositories["Seafoam-Labs/Shelly-ALPM"].languageBytes
+                  }
+                stars={repositoryData.repositories["Seafoam-Labs/Shelly-ALPM"].stars}
+              />
+
+              <RepositoryCard
+                locale="pt-br"
+                name="Pearl"
+                description="Interface de desktop desenvolvida em Zig e GTK4 para o compositor Wayland Aqueous."
+                languageBytes={
+                    repositoryData.repositories["Seafoam-Labs/Pearl"].languageBytes
+                  }
+                stars={repositoryData.repositories["Seafoam-Labs/Pearl"].stars}
+
+                repoUrl="https://github.com/Seafoam-Labs/Pearl/"
+                contributionsUrl="https://github.com/Seafoam-Labs/Pearl/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+              />
+              
+              <RepositoryCard
+                locale="pt-br"
+                name="Aqueous"
+                description="Compositor Wayland e gerenciador de janelas com organização dinâmica em mosaico, animações e efeitos Vulkan, em um único processo escrito em Zig."
+                languageBytes={
+                    repositoryData.repositories["Seafoam-Labs/Aqueous"].languageBytes
+                  }
+                  stars={repositoryData.repositories["Seafoam-Labs/Aqueous"].stars}
+                repoUrl="https://github.com/Seafoam-Labs/Aqueous/"
+                contributionsUrl="https://github.com/Seafoam-Labs/Aqueous/pulls?q=is%3Apr+is%3Amerged+author%3AVinnyQF"
+              />
+
+              <RepositoryCard
+                locale="pt-br"
+                name="Oficina-LaTeX"
+                description="Material em português de um minicurso de LaTeX que ministrei na universidade."
+                languageBytes={
+                    repositoryData.repositories["VinnyQF/minicurso-latex"].languageBytes
+                  }
+                stars={repositoryData.repositories["VinnyQF/minicurso-latex"].stars}
+                repoUrl="https://github.com/VinnyQF/minicurso-latex/"
+              />
+          </div>
+        </section>
+    </main>
+</BaseLayout>
