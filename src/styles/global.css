@@ -502,6 +502,9 @@ h2 + p {
   gap: clamp(1rem, 4vw, 3rem);
   padding-block: 1.75rem;
   border-top: 1px solid var(--color-border);
+}
+
+.experience-entry:last-child {
   border-bottom: 1px solid var(--color-border);
 }
 
