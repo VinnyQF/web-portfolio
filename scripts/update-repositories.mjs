@@ -49,7 +49,29 @@ async function fetchLanguages(repository) {
     throw new Error(`${repository}: invalid language data`);
   }
 
-  return { languageBytes };
+  const metadataResponse = await fetch(
+    `https://api.github.com/repos/${repository}`,
+    {
+      headers,
+      signal: AbortSignal.timeout(15_000),
+    },
+  );
+  
+  if (!metadataResponse.ok) {
+    throw new Error(
+      `${repository}: metadata request returned ${metadataResponse.status}`,
+    );
+  }
+  
+  const metadata = await metadataResponse.json();
+  const stars = metadata.stargazers_count;
+  
+  if (!Number.isSafeInteger(stars) || stars < 0) {
+    throw new Error(`${repository}: invalid star count`);
+  }
+
+
+  return { languageBytes, stars };
 }
 
 async function main() {

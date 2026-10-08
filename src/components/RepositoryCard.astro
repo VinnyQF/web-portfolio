@@ -7,24 +7,50 @@ interface Props {
   languages?: string[];
   contributionsUrl?: string;
   languageBytes?: Record<string,number>;
+  stars?: number;
 }
 const { 
   name, 
   description, 
   repoUrl, 
   languageBytes = {}, 
-  contributionsUrl 
+  contributionsUrl,
+  stars
 } = Astro.props;
 ---
 <article class="repo-card">
   <div class="repo-card__body">
-    
-      <h3>
-        <a class="repo-card__title-link" href={repoUrl}>
-          {name}
-          <span aria-hidden="true">↗</span>
-        </a>
-      </h3>
+      <div class="repo-card__heading">
+        <h3>
+          <a class="repo-card__title-link" href={repoUrl}>
+            {name}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </h3>
+      
+        {stars !== undefined && (
+          <span class="repo-card__stars">
+              <svg
+                class="repo-card__star-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="m12 3 2.78 5.63 6.22.9-4.5 4.39
+                     1.06 6.19L12 17.19l-5.56 2.92
+                     1.06-6.19L3 9.53l6.22-.9L12 3Z"
+                />
+              </svg>
+            {stars}
+            <span class="visually-hidden">GitHub stars</span>
+          </span>
+        )}
+      </div>
     <p class="repo-card__description">{description}</p>
   </div>
 
