@@ -416,13 +416,28 @@ h2 + p {
 }
 
 
-.skills-table th:first-child {
-  width: 8rem;
+
+.skills-table tbody th,
+.skills-table tbody td {
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
 }
 
-.skills-table td:nth-child(2) {
-  width: 14rem;
+.skills-table tbody tr:hover > th,
+.skills-table tbody tr:hover > td {
+  border-color: var(--muted-text);
 }
+
+.skills-table tbody tr:hover .tag {
+  border-color: var(--muted-text);
+}
+
+.skills-table .tag {
+  transition: border-color 150ms ease;
+}
+
+
 
 .project-section__updated {
   margin-block: 0 1.5rem;
