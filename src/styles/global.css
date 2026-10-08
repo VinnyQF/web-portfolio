@@ -20,6 +20,52 @@ main {
     margin-inline: auto;
     padding: clamp(2.5rem, 7vw, 6rem) 1.25rem;
 }
+
+.home-page {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.hero {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.hero h1 {
+  max-width: 24ch;
+  margin: 0;
+
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.hero__lead {
+  max-width: 62ch;
+  margin: 0;
+
+  color: var(--muted-text);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.home-page > .project-section {
+  margin-block-start: clamp(2rem, 4vw, 3rem);
+  padding-block-start: 1.5rem;
+}
+
+.home-page .project-section h2 {
+  margin-block: 0 0.5rem;
+}
+
+.home-page .project-section__updated {
+  margin-block: 0 1.5rem;
+}
+
+
 /*Intro*/
 .about-intro {
   display: grid;
