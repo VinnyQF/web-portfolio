@@ -1,0 +1,4 @@
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Run every Monday at 03:00 UTC.
+0 3 * * 1 cd /app && (npm run update:repositories && npm run build) > /proc/1/fd/1 2> /proc/1/fd/2
