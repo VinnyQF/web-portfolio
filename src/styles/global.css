@@ -739,9 +739,14 @@ h2 + p {
     filter 150ms ease;
 }
 
-.primary-nav a {
-  transition: color 150ms ease, text-shadow 150ms ease;
+.primary-nav a,
+.site-logo,
+.header-action,
+.language-switch,
+.language-switch__option {
+  transition: none;
 }
+
 
 .contact-link svg {
   transition: filter 150ms ease;
