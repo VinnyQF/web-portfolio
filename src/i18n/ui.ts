@@ -14,6 +14,8 @@ export const ui = {
     contributions: "Merged pull requests",
     distribution: "Repository language distribution",
     other: "Other",
+    contact: "Contact and profiles",
+    email: "Email",
   },
   "pt-br": {
     home: "Início",
@@ -28,5 +30,7 @@ export const ui = {
     contributions: "Pull requests incorporados",
     distribution: "Distribuição das linguagens do repositório",
     other: "Outras",
+    contact: "Contato e perfis",
+    email: "E-mail",
   },
 } satisfies Record<Locale, Record<string, string>>;

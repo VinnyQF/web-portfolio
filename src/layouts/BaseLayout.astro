@@ -18,18 +18,29 @@ const {
 
 const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
-const pagePath =
-  pathname.replace(/^\/pt-br(?=\/|$)/, "") || "/";
+const routes = {
+  home: {
+    en: "/",
+    "pt-br": "/pt-br/",
+  },
+  about: {
+    en: "/about",
+    "pt-br": "/pt-br/sobre",
+  },
+};
 
-const homeUrl = locale === "en" ? "/" : "/pt-br/";
-const aboutUrl = locale === "en" ? "/about" : "/pt-br/about";
+const isAbout =
+  pathname === "/about" || pathname === "/pt-br/sobre";
+
+const currentPage = isAbout ? "about" : "home";
+
+const pagePath = isAbout ? "/about" : "/";
+
+const homeUrl = routes.home[locale];
+const aboutUrl = routes.about[locale];
 
 const alternateLocale = locale === "en" ? "pt-br" : "en";
-
-const alternateUrl =
-  locale === "en"
-    ? `/pt-br${pagePath === "/" ? "/" : pagePath}`
-    : pagePath;
+const alternateUrl = routes[currentPage][alternateLocale];
 
 const labels = ui[locale];
 ---
@@ -121,6 +132,7 @@ const labels = ui[locale];
             class="site-logo"
             href={homeUrl}
             aria-label={`Vinícius Fonseca — ${labels.home}`}
+            aria-current={pagePath === "/" ? "page" : undefined}
           >
               <span
                 class="site-logo__mark"
