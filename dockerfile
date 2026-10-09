@@ -1,15 +1,21 @@
-FROM node:26-alpine3.23 AS runtime
+ARG NODE_IMAGE=node:26-alpine3.23
+ARG NGINX_IMAGE=nginx:stable-alpine
+FROM ${NODE_IMAGE} AS tooling
 WORKDIR /app
 
-COPY . .
-
+COPY package.json package-lock.json ./
 RUN npm ci
+
+COPY . .
+FROM tooling AS build
 RUN npm run build
 
-COPY docker/repositories.cron /etc/portfolio-crontabs/root
-
-ENV HOST=0.0.0.0
-ENV PORT=4321
-ENV TZ=UTC
-EXPOSE 4321
-CMD ["sh", "-c", "crond -b -c /etc/portfolio-crontabs -L /proc/1/fd/2 && exec npm run preview -- --host 0.0.0.0 --port 4321"]
+FROM ${NGINX_IMAGE} AS runtime
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+USER nginx
+EXPOSE 8080
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget -q -O /dev/null http://127.0.0.1:8080/healthz || exit 1
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]

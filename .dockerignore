@@ -4,3 +4,6 @@ dist
 .env
 .env.*
 !.env.example
+refresh.log
+.refresh.lock
+src/data/repositories.json.tmp
