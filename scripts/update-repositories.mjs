@@ -1,4 +1,6 @@
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { isDeepStrictEqual } from "node:util";
+
 
 const repositories = [
   "Seafoam-Labs/Shelly-ALPM",
@@ -83,6 +85,23 @@ async function main() {
     results[repository] = await fetchLanguages(repository);
   }
 
+  let previousSnapshot
+
+  try {
+    previousSnapshot = JSON.parse(
+      await readFile(snapshotFile, "utf8"),
+    );
+  } catch (error) {
+    if (error.code !== "ENOENT") {
+      throw error;
+    }
+  }
+
+  if (isDeepStrictEqual(previousSnapshot?.repositories, results)) {
+    console.log("Repository data is unchanged; keeping the existing snapshot.");
+    return;
+  }
+  
   const snapshot = {
     updatedAt: new Date().toISOString(),
     repositories: results,
