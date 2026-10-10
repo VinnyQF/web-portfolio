@@ -1,4 +1,5 @@
 ---
+import SocialLinks from "../components/SocialLinks.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RepositoryCard from "../components/RepositoryCard.astro";
 import repositoryData from "../data/repositories.json";
@@ -21,6 +22,7 @@ const updatedLabel = new Intl.DateTimeFormat("en", {
             <p class="hero__lead">
               Below are selected projects I've built or contributed to.
             </p>
+            <SocialLinks />
           </section>
         <section class="project-section" aria-labelledby="projects-heading">
           <h2 id="projects-heading">Projects</h2>
