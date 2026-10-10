@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { pages } from './helpers.mjs';
+import { pages, attribute } from './helpers.mjs';
 
 const base = new URL(process.env.TEST_BASE_URL ?? 'http://127.0.0.1:4321');
 function request(path, options = {}) {
@@ -38,10 +38,12 @@ test('Health check and missing routes return the appropriate status', async () =
   assert.equal((await request('/_astro/not-a-real-asset.css')).status, 404);
 });
 
-test('Generated CSS has immutable caching and supports conditional requests', async () => {
+test('Generated favicon has immutable caching and supports conditional requests', async () => {
   const html = await (await request('/')).text();
-  const asset = html.match(/href="(\/_astro\/[^" ]+\.css)"/)?.[1];
-  assert.ok(asset, 'A generated stylesheet must be linked');
+  const icon = html.match(/<link\b[^>]*rel="icon"[^>]*>/)?.[0];
+  assert.ok(icon, 'A favicon must be linked');
+  const asset = attribute(icon, 'href');
+  assert.ok(asset?.startsWith('/_astro/'), 'The favicon must be a generated asset');
   const response = await request(asset);
   assert.equal(response.status, 200);
   assert.match(response.headers.get('cache-control'), /immutable/);

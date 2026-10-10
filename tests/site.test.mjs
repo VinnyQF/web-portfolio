@@ -4,6 +4,19 @@ import { access } from 'node:fs/promises';
 import { pages, readPage, attribute, tagWithClass } from './helpers.mjs';
 
 for (const page of pages) {
+  test(`${page.route}: page styles are embedded in the head`, async () => {
+    const html = await readPage(page);
+    const head = html.match(/<head>([\s\S]*?)<\/head>/)?.[1];
+    assert.ok(head);
+    const styles = [...head.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/g)]
+      .map(([, css]) => css).join('\n');
+    assert.match(styles, /\.site-header\b/);
+    assert.match(styles, /--color-background\s*:/);
+    const externalStyles = [...html.matchAll(/<link\b[^>]*>/g)]
+      .filter(([tag]) => attribute(tag, 'rel') === 'stylesheet');
+    assert.equal(externalStyles.length, 0, 'Page styles should not require another request');
+  });
+
   test(`${page.route}: locale, metadata, navigation and language switch`, async () => {
     const html = await readPage(page);
     assert.equal(attribute(html.match(/<html\b[^>]*>/)[0], 'lang'), page.lang);
