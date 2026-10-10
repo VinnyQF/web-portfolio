@@ -701,10 +701,7 @@ h2 + p {
 
 /* Shared interaction styles */
 :where(
-  .about-intro,
-  .about-intro__portrait,
   .repo-card,
-  .experience-entry,
   .site-logo,
   .header-action,
   .contact-link,
@@ -731,27 +728,17 @@ h2 + p {
   transition: filter 150ms ease;
 }
 
-/* Panels and rows share the same active border color. */
-.about-intro:is(:hover, :focus-within),
-.about-intro:is(:hover, :focus-within) .about-intro__portrait,
+/* Repository cards and technology groups share the active border color. */
 .repo-card:is(:hover, :focus-within),
-.experience-entry:is(:hover, :focus-within),
 .technology-group:is(:hover, :focus-within),
 .technology-group:is(:hover, :focus-within) .tag {
   border-color: var(--color-border-hover);
 }
 
-.about-intro:is(:hover, :focus-within),
-.about-intro:is(:hover, :focus-within) .about-intro__portrait,
 .repo-card:is(:hover, :focus-within),
 .technology-group:is(:hover, :focus-within),
 .technology-group:is(:hover, :focus-within) .tag {
   box-shadow: var(--hover-border-ring);
-}
-
-/* Experience entries have horizontal borders only. */
-.experience-entry:is(:hover, :focus-within) {
-  box-shadow: var(--hover-line-ring);
 }
 
 /* Icon links and controls share their active colors and border treatment. */
@@ -776,10 +763,7 @@ h2 + p {
 
 @media (prefers-reduced-motion: reduce) {
   :where(
-    .about-intro,
-    .about-intro__portrait,
     .repo-card,
-    .experience-entry,
     .site-logo,
     .header-action,
     .contact-link,
