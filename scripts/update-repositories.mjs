@@ -4,7 +4,8 @@ const repositories = [
   "Seafoam-Labs/Shelly-ALPM",
   "Seafoam-Labs/Pearl",
   "Seafoam-Labs/Aqueous",
-  "VinnyQF/minicurso-latex"
+  "VinnyQF/minicurso-latex",
+  "VinnyQF/web-portfolio"
 ];
 
 const dataDirectory = new URL("../src/data/", import.meta.url);

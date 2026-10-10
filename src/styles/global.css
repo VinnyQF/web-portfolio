@@ -818,7 +818,6 @@ h2 + p {
   }
 }
 
-/* Layout para telas pequenas */
 @media (max-width: 40rem) {
   .site-header__inner {
     width: calc(100% - 2rem);
@@ -908,7 +907,6 @@ h2 + p {
     padding-block-end: 1rem;
   }
 
-  /* Keep column headings available to assistive technology. */
   .skills-table thead {
     position: absolute;
     width: 1px;
@@ -969,7 +967,6 @@ h2 + p {
   }
 }
 
-/* Feedback durante o toque ou clique */
 .primary-nav a:active,
 .header-action:active,
 .site-logo:active,
