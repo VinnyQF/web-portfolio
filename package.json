@@ -25,5 +25,8 @@
   "homepage": "https://github.com/VinnyQF/web-portifolio#readme",
   "dependencies": {
     "astro": "^7.3.2"
+  },
+  "engines":{
+    "node": "24.x"
   }
 }

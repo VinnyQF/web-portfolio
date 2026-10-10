@@ -566,6 +566,7 @@ h2 + p {
 
 .repo-grid {
   display: grid;
+  grid-auto-rows: 1fr;
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(100%, 20rem), 1fr)
@@ -616,43 +617,24 @@ h2 + p {
   line-height: 1.4;
 }
 
-/* Table */
-.table-scroll {
-  overflow-x: auto;
+/* Technologies */
+.technology-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
 }
 
-.skills-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.skills-table__mobile-label {
-  display: none;
-}
-
-.skills-table caption {
-  text-align: left;
-  color: var(--muted-text);
-  font-size: 0.875rem;
-  padding-block-end: 0.75rem;
-}
-
-.skills-table th,
-.skills-table td {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  vertical-align: top;
-}
-
-.skills-table thead th {
+.technology-group {
+  min-width: 0;
+  padding: 1.25rem;
   background-color: var(--color-surface);
-  font-size: 0.875rem;
+  border: 1px solid var(--color-border);
 }
 
-.skills-table tbody th {
-  color: var(--muted-text);
-  white-space: nowrap;
+.technology-group h3 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 /* Experience */
@@ -732,9 +714,8 @@ h2 + p {
   .site-logo,
   .header-action,
   .contact-link,
-  .skills-table tbody th,
-  .skills-table tbody td,
-  .skills-table .tag
+  .technology-group,
+  .technology-group .tag
 ) {
   transition:
     color 150ms ease,
@@ -761,16 +742,16 @@ h2 + p {
 .about-intro:is(:hover, :focus-within) .about-intro__portrait,
 .repo-card:is(:hover, :focus-within),
 .experience-entry:is(:hover, :focus-within),
-.skills-table tbody tr:is(:hover, :focus-within) > :is(th, td),
-.skills-table tbody tr:is(:hover, :focus-within) .tag {
+.technology-group:is(:hover, :focus-within),
+.technology-group:is(:hover, :focus-within) .tag {
   border-color: var(--color-border-hover);
 }
 
 .about-intro:is(:hover, :focus-within),
 .about-intro:is(:hover, :focus-within) .about-intro__portrait,
 .repo-card:is(:hover, :focus-within),
-.skills-table tbody tr:is(:hover, :focus-within) > :is(th, td),
-.skills-table tbody tr:is(:hover, :focus-within) .tag {
+.technology-group:is(:hover, :focus-within),
+.technology-group:is(:hover, :focus-within) .tag {
   box-shadow: var(--hover-border-ring);
 }
 
@@ -810,15 +791,18 @@ h2 + p {
     .contact-link,
     .contact-link svg,
     .primary-nav a,
-    .skills-table tbody th,
-    .skills-table tbody td,
-    .skills-table .tag
+    .technology-group,
+    .technology-group .tag
   ) {
     transition: none;
   }
 }
 
 @media (max-width: 40rem) {
+  .repo-grid {
+    grid-auto-rows: auto;
+  }
+
   .site-header__inner {
     width: calc(100% - 2rem);
     grid-template-columns: minmax(0, 1fr) auto;
@@ -891,79 +875,6 @@ h2 + p {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-  }
-
-  .table-scroll {
-    overflow-x: visible;
-  }
-
-  .skills-table,
-  .skills-table tbody {
-    display: block;
-  }
-
-  .skills-table caption {
-    display: block;
-    padding-block-end: 1rem;
-  }
-
-  .skills-table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
-  }
-
-  .skills-table tbody tr {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-surface);
-    transition: border-color 150ms ease;
-  }
-
-  .skills-table tbody tr + tr {
-    margin-block-start: 1rem;
-  }
-
-  .skills-table tbody tr:is(:hover, :focus-within) {
-    border-color: var(--color-border-hover);
-  }
-
-  .skills-table tbody tr > :is(th, td) {
-    display: block;
-    min-width: 0;
-    width: auto;
-    padding: 0;
-    border: 0;
-    box-shadow: none;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .skills-table tbody th {
-    color: var(--color-text);
-    font-size: 1rem;
-  }
-
-  .skills-table__mobile-label {
-    display: block;
-    margin-block-end: 0.5rem;
-    color: var(--muted-text);
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skills-table tbody tr {
-    transition: none;
   }
 }
 
