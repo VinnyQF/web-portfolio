@@ -9,6 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "npm run build && node --test tests/site.test.mjs tests/theme.test.mjs",
+    "test:container": "node --test tests/container.test.mjs",
     "update:repositories": "node scripts/update-repositories.mjs"
   },
   "repository": {

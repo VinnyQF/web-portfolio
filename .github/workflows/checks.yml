@@ -1,0 +1,47 @@
+name: Site checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  site:
+    name: Static site and theme
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+  container:
+    name: Production container
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+      - name: Validate and start container
+        run: |
+          docker compose --profile tools config --quiet
+          sh -n scripts/refresh-site.sh
+          docker compose up -d --build --wait portfolio
+          docker compose exec -T portfolio nginx -t
+      - name: Check static routes and cache policy
+        run: npm run test:container
+      - name: Container logs
+        if: failure()
+        run: docker compose logs portfolio
+      - name: Clean up
+        if: always()
+        run: docker compose down
