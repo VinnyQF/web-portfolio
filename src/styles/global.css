@@ -178,14 +178,8 @@ main {
   text-wrap: pretty;
 }
 
-.about-intro__contact {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-
-  margin: auto 0 0;
-  padding: 0;
-  list-style: none;
+.about-intro__content > .social-links {
+  margin-block-start: auto;
 }
 
 .about-intro__content p {
@@ -206,7 +200,7 @@ main {
   line-height: 1.7;
 }
 
-.about-intro__contact {
+.social-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -215,7 +209,7 @@ main {
   list-style: none;
 }
 
-.about-intro__contact .contact-link {
+.social-links .contact-link {
   display: grid;
   place-items: center;
   width: 2.75rem;
@@ -763,7 +757,7 @@ h2 + p {
 /* Icon links and controls share their active colors and border treatment. */
 .site-logo:is(:hover, :focus-visible),
 .header-action:is(:hover, :focus-visible),
-.about-intro__contact .contact-link:is(:hover, :focus-visible) {
+.social-links .contact-link:is(:hover, :focus-visible) {
   color: var(--color-text);
   border-color: var(--color-border-hover);
   box-shadow: var(--hover-border-ring);
@@ -882,7 +876,7 @@ h2 + p {
 .header-action:active,
 .site-logo:active,
 .language-switch:active,
-.about-intro__contact .contact-link:active {
+.social-links .contact-link:active {
   color: var(--color-text);
   background-color: var(--color-surface);
   border-color: var(--color-border-hover);
