@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-10-10T03:39:52.795Z",
+  "updatedAt": "2026-10-10T11:20:14.012Z",
   "repositories": {
     "Seafoam-Labs/Shelly-ALPM": {
       "languageBytes": {
-        "Zig": 11310227,
+        "Zig": 11380673,
         "C": 220403,
         "Python": 145541,
         "Shell": 138464,
@@ -51,7 +51,7 @@
       "languageBytes": {
         "Astro": 38534,
         "CSS": 16504,
-        "JavaScript": 12197,
+        "JavaScript": 13442,
         "TypeScript": 1121,
         "Shell": 291
       },
