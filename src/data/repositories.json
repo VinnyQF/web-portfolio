@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-10-11T10:00:15.298Z",
+  "updatedAt": "2026-10-12T10:49:14.109Z",
   "repositories": {
     "Seafoam-Labs/Shelly-ALPM": {
       "languageBytes": {
-        "Zig": 11420501,
+        "Zig": 11438564,
         "C": 220403,
         "Python": 145541,
         "Shell": 138464,
         "Meson": 18922,
         "CSS": 3445
       },
-      "stars": 1185
+      "stars": 1187
     },
     "Seafoam-Labs/Pearl": {
       "languageBytes": {
@@ -49,7 +49,7 @@
     },
     "VinnyQF/web-portfolio": {
       "languageBytes": {
-        "Astro": 34439,
+        "Astro": 33083,
         "CSS": 15902,
         "JavaScript": 13442,
         "TypeScript": 1121,
