@@ -1,38 +1,39 @@
 {
-  "updatedAt": "2026-10-12T10:49:14.109Z",
+  "updatedAt": "2026-10-13T10:35:40.237Z",
   "repositories": {
     "Seafoam-Labs/Shelly-ALPM": {
       "languageBytes": {
-        "Zig": 11438564,
+        "Zig": 11508989,
         "C": 220403,
+        "Shell": 159962,
         "Python": 145541,
-        "Shell": 138464,
         "Meson": 18922,
         "CSS": 3445
       },
-      "stars": 1187
+      "stars": 1189
     },
     "Seafoam-Labs/Pearl": {
       "languageBytes": {
-        "Zig": 4192884,
-        "Python": 1546777,
-        "CSS": 421611,
-        "C": 367344,
-        "HTML": 109875,
+        "Zig": 4380317,
+        "Python": 1655779,
+        "C": 533106,
+        "CSS": 423309,
+        "HTML": 116660,
         "Emacs Lisp": 60812,
-        "Shell": 59424,
+        "Shell": 52477,
+        "JavaScript": 13399,
         "Lua": 6065,
-        "C++": 3024,
+        "C++": 3861,
         "Rust": 2168
       },
       "stars": 6
     },
     "Seafoam-Labs/Aqueous": {
       "languageBytes": {
-        "Zig": 3202800,
-        "Python": 1003572,
-        "C": 904032,
-        "Shell": 621619,
+        "Zig": 3200728,
+        "Python": 1018288,
+        "C": 906325,
+        "Shell": 620655,
         "Nix": 28670,
         "QML": 15622,
         "GLSL": 14820,
