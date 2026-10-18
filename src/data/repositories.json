@@ -1,46 +1,46 @@
 {
-  "updatedAt": "2026-10-15T08:18:17.033Z",
+  "updatedAt": "2026-10-18T08:01:30.754Z",
   "repositories": {
     "Seafoam-Labs/Shelly-ALPM": {
       "languageBytes": {
-        "Zig": 11517888,
+        "Zig": 11583134,
         "C": 220403,
-        "Shell": 159962,
-        "Python": 145541,
+        "Shell": 161504,
+        "Python": 149985,
         "Meson": 18922,
         "CSS": 3445
       },
-      "stars": 1189
+      "stars": 1200
     },
     "Seafoam-Labs/Pearl": {
       "languageBytes": {
-        "Zig": 5019658,
-        "Python": 1717837,
-        "CSS": 427330,
+        "Zig": 5404519,
+        "Python": 1890965,
+        "CSS": 441452,
         "C": 374408,
         "HTML": 116660,
-        "Shell": 69476,
+        "Shell": 69570,
         "Emacs Lisp": 60812,
         "JavaScript": 13399,
         "Lua": 6065,
         "C++": 3861,
         "Rust": 2168
       },
-      "stars": 6
+      "stars": 7
     },
     "Seafoam-Labs/Aqueous": {
       "languageBytes": {
         "Zig": 3200728,
-        "Python": 1021900,
+        "Python": 1021989,
         "C": 906325,
-        "Shell": 628633,
+        "Shell": 628638,
         "Nix": 28670,
         "QML": 15622,
         "GLSL": 14820,
         "JavaScript": 1984,
         "C++": 1090
       },
-      "stars": 37
+      "stars": 39
     },
     "VinnyQF/minicurso-latex": {
       "languageBytes": {
